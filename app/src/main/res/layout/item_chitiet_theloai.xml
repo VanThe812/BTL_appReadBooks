@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="131dp"
+    android:layout_margin="8px"
+android:layout_height="wrap_content"
+android:layout_marginEnd="10dp"
+xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/layout_item_chitiet_theloai"
+        android:layout_height="200dp">
+        <ImageView
+
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:src="@drawable/tocoratnhieufan"
+            android:id="@+id/img_chitiettheloai"/>
+        <TextView
+            android:layout_marginTop="170dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tớ có rất nhiều “fan“ - Bồ nhông"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="12dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:id="@+id/tv_chitiettheloai"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

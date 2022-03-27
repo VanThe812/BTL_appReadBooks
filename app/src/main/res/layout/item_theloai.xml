@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="137dp"
+    android:layout_height="170dp">
+<!--    <ImageView-->
+<!--        android:layout_width="125dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/toithayhoavangtrencoxanh"/>-->
+    <RelativeLayout
+        android:id="@+id/layout_item_theloai"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="3dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/img_theloai"
+            android:layout_width="137dp"
+            android:layout_height="170dp"
+            android:padding="2dp"
+            android:src="@drawable/toithayhoavangtrencoxanh"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/tv_tentheloai"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:maxLength="25"
+            android:padding="6dp"
+            android:text="TÌNH CẢM LÃNG MẠN"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/duongvien_goctron"
+
+            android:textSize="14dp" />
+<!--        bảng độ mờ-->
+<!--        100% - FF-->
+<!--        95% - F2-->
+<!--        90% - E6-->
+<!--        85% - D9-->
+<!--        80% - CC-->
+<!--        75% - BF-->
+<!--        70% - B3-->
+<!--        65% - A6-->
+<!--        60% - 99-->
+<!--        55% - 8C-->
+<!--        50% - 80-->
+<!--        45% - 73-->
+<!--        40% - 66-->
+<!--        35% - 59-->
+<!--        30% - 4D-->
+<!--        25% - 40-->
+<!--        20% - 33-->
+<!--        15% - 26-->
+<!--        10% - 1A-->
+<!--        5% - 0D-->
+<!--        0% - 00-->
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

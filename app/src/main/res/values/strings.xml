@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BTL_appReadBooks</string>
+    <string name="action_home">Trang chủ</string>
+    <string name="action_category">Thể loại</string>
+    <string name="action_thuvien">Thư viện</string>
+    <string name="action_user">Cá nhân</string>
+</resources>
