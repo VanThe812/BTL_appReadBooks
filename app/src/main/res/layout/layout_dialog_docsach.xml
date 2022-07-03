@@ -5,124 +5,202 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    android:layout_height="match_parent">
-    <LinearLayout
+    android:layout_height="wrap_content">
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:text="Edit"
+        android:background="@drawable/bg_blues_corner_top_left_top_right"
+        />
+    <LinearLayout
 
-        <Button
-            android:id="@+id/btn_day"
+        android:paddingBottom="20dp"
+        android:id="@+id/layout_dialog_docsach"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_white_corner"
+        >
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/white"
-            android:textSize="18dp"
-            android:drawableBottom="@drawable/icon_chinhsua"
-            android:text="Day"
-            android:textColor="#000000"></Button>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+<!--            <Button-->
+<!--                android:id="@+id/btn_day"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:backgroundTint="@color/white"-->
+<!--                android:textSize="20dp"-->
+
+<!--                android:drawableBottom="@drawable/baseline_light_mode_black_18"-->
+<!--                android:text="Day"-->
+<!--                android:textColor="#000000"></Button>-->
+<!--            <View-->
+<!--                android:layout_width="2dp"-->
+<!--                android:layout_height="45dp"-->
+<!--                android:layout_marginBottom="4dp"-->
+<!--                android:background="#c0c0c0"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/guideline3"-->
+<!--                tools:layout_editor_absoluteX="0dp" />-->
+<!--            <Button-->
+<!--                android:id="@+id/btn_night"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:backgroundTint="@color/white"-->
+<!--                android:textSize="18dp"-->
+<!--                android:drawableBottom="@drawable/sharp_nightlight_round_black_18"-->
+<!--                android:text="Night"-->
+<!--                android:textColor="#000000"></Button>-->
+
+            <ImageButton
+                android:backgroundTint="@color/white"
+                android:id="@+id/btn_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/baseline_light_mode_black_18" />
+            <View
+                            android:layout_width="2dp"
+                            android:layout_height="45dp"
+                            android:layout_marginBottom="4dp"
+                            android:background="#c0c0c0"
+                            app:layout_constraintBottom_toTopOf="@+id/guideline3"
+                            tools:layout_editor_absoluteX="0dp" />
+            <ImageButton
+                android:backgroundTint="@color/white"
+                android:id="@+id/btn_night"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/sharp_nightlight_round_black_18" />
+
+        </LinearLayout>
         <View
-            android:layout_width="2dp"
-            android:layout_height="45dp"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
             android:layout_marginBottom="4dp"
             android:background="#c0c0c0"
             app:layout_constraintBottom_toTopOf="@+id/guideline3"
             tools:layout_editor_absoluteX="0dp" />
-        <Button
-            android:id="@+id/btn_night"
+        <LinearLayout
+
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/white"
-            android:textSize="18dp"
-            android:drawableBottom="@drawable/icon_chinhsua"
-            android:text="Night"
-            android:textColor="#000000"></Button>
+            android:layout_height="wrap_content">
 
-    </LinearLayout>
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:layout_marginBottom="4dp"
-        android:background="#c0c0c0"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        tools:layout_editor_absoluteX="0dp" />
-    <LinearLayout
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <TextView
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textAlignment="center"
+                android:id="@+id/tv_serif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Normal" />
 
-        <TextView
-            android:textSize="18dp"
-            android:textAlignment="center"
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+            <TextView
+                android:textSize="18dp"
+                android:textAlignment="center"
+                android:id="@+id/tv_serif_thin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Robotolack" />
 
-        <TextView
-            android:textSize="18dp"
-            android:textAlignment="center"
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+            <TextView
+                android:textSize="18dp"
+                android:textAlignment="center"
+                android:id="@+id/serif_light"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="BoldItalic" />
 
-        <TextView
-            android:textSize="18dp"
-            android:textAlignment="center"
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
-
-        <TextView
-            android:textSize="18dp"
-            android:textColor="@color/black"
-            android:textAlignment="center"
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
-    </LinearLayout>
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:layout_marginBottom="4dp"
-        android:background="#c0c0c0"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        tools:layout_editor_absoluteX="0dp" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/icon_chinhsua"
-            />
-        <SeekBar
-            android:thumb="@drawable/custom_thumb_seekbar"
-            android:layout_weight="1"
-            android:progressDrawable="@drawable/custom_seekbar"
-            android:id="@+id/seekBar"
+            <TextView
+                android:textSize="18dp"
+                android:textAlignment="center"
+                android:id="@+id/serif_condensed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Regular" />
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_marginBottom="4dp"
+            android:background="#c0c0c0"
+            app:layout_constraintBottom_toTopOf="@+id/guideline3"
+            tools:layout_editor_absoluteX="0dp" />
+        <LinearLayout
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:max="5"
-            android:min="1"
-            android:padding="10dp"
-            android:minHeight="40dp"
-            android:progress="3" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/icon_chinhsua"
-            />
+            android:layout_height="wrap_content">
+            <TextView
+
+                android:id="@+id/tv_giam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/baseline_minimize_black_18"
+                />
+            <SeekBar
+                android:thumb="@drawable/custom_thumb_seekbar"
+                android:layout_weight="1"
+                android:progressDrawable="@drawable/custom_seekbar"
+                android:id="@+id/sb_cochu"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:max="5"
+                android:min="1"
+                android:padding="10dp"
+                android:minHeight="40dp"
+                android:progress="3" />
+            <TextView
+                android:id="@+id/tv_tang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/baseline_add_black_18"
+                />
+        </LinearLayout>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btn_no"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:backgroundTint="#777777"-->
+<!--                android:text="No"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:textSize="14dp" />-->
+<!--            <Button-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:id="@+id/btn_thaydoi"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_marginEnd="10dp"-->
+<!--                android:backgroundTint="@color/blues"-->
+<!--                android:textSize="14dp"-->
+<!--                android:text="Thay đổi"-->
+<!--                />-->
+<!--        </LinearLayout>-->
     </LinearLayout>
 
 

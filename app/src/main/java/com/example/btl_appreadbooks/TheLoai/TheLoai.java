@@ -5,9 +5,9 @@ import java.io.Serializable;
 public class TheLoai implements Serializable {
     private int matheloai;
     private String tentheloai;
-    private int maanh;
+    private byte[] maanh;
 
-    public TheLoai(int matheloai, String tentheloai, int maanh) {
+    public TheLoai(int matheloai, String tentheloai, byte[] maanh) {
         this.matheloai = matheloai;
         this.tentheloai = tentheloai;
         this.maanh = maanh;
@@ -29,11 +29,11 @@ public class TheLoai implements Serializable {
         this.tentheloai = tentheloai;
     }
 
-    public int getMaanh() {
+    public byte[] getMaanh() {
         return maanh;
     }
 
-    public void setMaanh(int maanh) {
+    public void setMaanh(byte[] maanh) {
         this.maanh = maanh;
     }
 }

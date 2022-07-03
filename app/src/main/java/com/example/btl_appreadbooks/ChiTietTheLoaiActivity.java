@@ -5,19 +5,15 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.btl_appreadbooks.Category_Books.Category_Books;
-import com.example.btl_appreadbooks.Category_Books.Category_BooksAdapter;
 import com.example.btl_appreadbooks.Category_Books.Category_BooksTheLoai;
 import com.example.btl_appreadbooks.Category_Books.Category_BooksTheLoaiAdapter;
-import com.example.btl_appreadbooks.Category_TheLoai.Category_Theloai;
-import com.example.btl_appreadbooks.Category_TheLoai.Category_TheloaiAdapter;
+import com.example.btl_appreadbooks.QuanLy.QuanLy;
 import com.example.btl_appreadbooks.TheLoai.TheLoai;
 import com.example.btl_appreadbooks.books.Books;
 
@@ -31,20 +27,23 @@ public class ChiTietTheLoaiActivity extends AppCompatActivity {
 
     private ImageButton btn_close;
     private TextView tv_title_chitet_theloai;
+    int matl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         setContentView(R.layout.activity_chi_tiet_the_loai);
-        tv_title_chitet_theloai = findViewById(R.id.tv_title_chitet_theloai);
+        tv_title_chitet_theloai = findViewById(R.id.tv_huy);
 
         Bundle bundle = getIntent().getExtras();
         if(bundle == null)
             return;
-        TheLoai theLoai = (TheLoai) bundle.get("obj_theloai");
-        tv_title_chitet_theloai.setText(theLoai.getTentheloai());
+        matl = bundle.getInt("id");
+
+        tv_title_chitet_theloai.setText(bundle.getString("tentheloai"));
 
         btn_close = findViewById(R.id.btn_close);
-
         btn_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,8 +58,8 @@ public class ChiTietTheLoaiActivity extends AppCompatActivity {
         rcv_category_books.setLayoutManager(linearLayoutManager);
 
         //thêm đg biên cho các rcv
-        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(ChiTietTheLoaiActivity.this, DividerItemDecoration.VERTICAL);
-        rcv_category_books.addItemDecoration(itemDecoration);
+//        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(ChiTietTheLoaiActivity.this, DividerItemDecoration.VERTICAL);
+//        rcv_category_books.addItemDecoration(itemDecoration);
 
         category_booksTheLoaiAdapter.setData(getListCategoryBooks());
         rcv_category_books.setAdapter(category_booksTheLoaiAdapter);
@@ -73,18 +72,18 @@ public class ChiTietTheLoaiActivity extends AppCompatActivity {
 
         List<Books> listBook = new ArrayList<>();
 
-//        for (Books books : lsBooks) {
-//            listBook.add(new Books(books.getResourceId(), books.getMasach(), books.getTitle(), books.getChitiet(), books.getTacgia()));
-//        }
+        Cursor cursor = MainActivity.database.GetData("SELECT PK_MaSach, TenSach, HinhAnh_S FROM Sach WHERE FK_MaTL = "+matl);
         int dem = 1;
-        for (int i = 0; i<20; i++){
-
-            listBook.add(new Books(R.drawable.img, 1, "1_89.000 ₫", "helllllo", "1Nguyen Nhat Anh"));
+        while (cursor.moveToNext()){
+            listBook.add(new Books(cursor.getInt(0), cursor.getString(1), cursor.getBlob(2)));
             if(dem %3 == 0){
                 listCategory.add(new Category_BooksTheLoai(listBook));
                 listBook = new ArrayList<>();
             }
             dem++;
+        }
+        if(listBook!=null){
+            listCategory.add(new Category_BooksTheLoai(listBook));
         }
 
 

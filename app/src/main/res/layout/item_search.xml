@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/layout_item_search"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="xin chaof moij nguoiwf, mk xin tu gioi thieu, mk ten laf the"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:id="@+id/tv_tensach"
+        android:ellipsize = "end"
+        android:maxLines="1"
+        />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:layout_height="1dp"
+        android:background="#AAA5A5"
+        tools:layout_editor_absoluteX="0dp" />
+
+
+</LinearLayout>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/layout_docsach"
     android:orientation="vertical"
     tools:context=".DocSachActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,13 +25,13 @@
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <TextView
-            android:id="@+id/tv_title_chitet_theloai"
+            android:id="@+id/tv_huy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="TextView"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,6 +40,8 @@
 
 
         <ImageButton
+
+            android:background="#FFFFFF"
             android:id="@+id/btn_chinhsua"
             android:layout_width="42dp"
             android:layout_height="40dp"
@@ -46,7 +49,7 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/icon_chinhsua"
+            app:srcCompat="@drawable/baseline_edit_note_black_18"
             tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -68,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="#000000"
-                android:textSize="20sp" />
+                android:textSize="25sp" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -2,6 +2,8 @@ package com.example.btl_appreadbooks.TheLoai;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,7 +47,10 @@ public class TheLoaiAdapter extends RecyclerView.Adapter<TheLoaiAdapter.TheLoaiV
         if(theLoai == null){
             return;
         }
-        holder.imgtheloai.setImageResource(theLoai.getMaanh());
+        //chuyen byte[] -> bitmap
+        byte[] hinhanh = theLoai.getMaanh();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(hinhanh, 0, hinhanh.length);
+        holder.imgtheloai.setImageBitmap(bitmap);
         holder.tv_tentheloai.setText(theLoai.getTentheloai());
 
         holder.layout_item_theloai.setOnClickListener(new View.OnClickListener() {
@@ -59,10 +64,11 @@ public class TheLoaiAdapter extends RecyclerView.Adapter<TheLoaiAdapter.TheLoaiV
     private void onClickGotoChiTietTheLoai(TheLoai theloai) {
         Intent intent = new Intent(mContext, ChiTietTheLoaiActivity.class);
 
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("obj_theloai", theloai);
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable("obj_theloai", theloai);
 
-        intent.putExtras(bundle);
+        intent.putExtra("id", theloai.getMatheloai());
+        intent.putExtra("tentheloai", theloai.getTentheloai());
         mContext.startActivity(intent);
     }
     @Override
