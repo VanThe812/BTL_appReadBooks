@@ -60,10 +60,10 @@ public class ContactDBHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         //put du lieu can insert vao doi tuong contentValues
         contentValues.put(ID_BOOK, contact.getMasach());
-        contentValues.put(ID_TAINGUYEN, contact.getResourceId());
-        contentValues.put(TIEUDE_BOOK, contact.getTitle());
-        contentValues.put(TOMTAT_BOOK, contact.getChitiet());
-        contentValues.put(TACGIA, contact.getTacgia());
+//        contentValues.put(ID_TAINGUYEN, contact.getResourceId());
+//        contentValues.put(TIEUDE_BOOK, contact.getTitle());
+//        contentValues.put(TOMTAT_BOOK, contact.getChitiet());
+//        contentValues.put(TACGIA, contact.getTacgia());
         //lay ra sqlitedatabase de thuc ghi du lieu
         SQLiteDatabase db = getWritableDatabase();
         long result = db.insert(TB_NAME_BOOK,null,contentValues);
@@ -80,10 +80,10 @@ public class ContactDBHelper extends SQLiteOpenHelper {
         while (cursor.moveToNext()){
             Books books = new Books();
             books.setMasach(cursor.getInt(0));
-            books.setResourceId(cursor.getInt(1));
-            books.setTitle(cursor.getString(2));
-            books.setChitiet(cursor.getString(3));
-            books.setTacgia(cursor.getString(4));
+//            books.setResourceId(cursor.getInt(1));
+//            books.setTitle(cursor.getString(2));
+//            books.setChitiet(cursor.getString(3));
+//            books.setTacgia(cursor.getString(4));
             result.add(books);
         }
         return result;
@@ -123,10 +123,10 @@ public class ContactDBHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         //put du lieu can insert vao doi tuong contentValues
         contentValues.put(ID_BOOK, contact.getMasach());
-        contentValues.put(ID_TAINGUYEN, contact.getResourceId());
-        contentValues.put(TIEUDE_BOOK, contact.getTitle());
-        contentValues.put(TOMTAT_BOOK, contact.getChitiet());
-        contentValues.put(TACGIA, contact.getTacgia());
+//        contentValues.put(ID_TAINGUYEN, contact.getResourceId());
+//        contentValues.put(TIEUDE_BOOK, contact.getTitle());
+//        contentValues.put(TOMTAT_BOOK, contact.getChitiet());
+//        contentValues.put(TACGIA, contact.getTacgia());
         //lay ra sqlitedatabase de thuc ghi du lieu
         SQLiteDatabase db = getWritableDatabase();
         long result = db.insert(TB_NAME_BOOK,null,contentValues);

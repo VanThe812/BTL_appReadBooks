@@ -71,12 +71,24 @@
         </LinearLayout>
 
         <View
+            android:id="@+id/view4"
             android:layout_width="fill_parent"
             android:layout_height="2dp"
             android:layout_marginBottom="4dp"
             android:background="#c0c0c0"
             app:layout_constraintBottom_toTopOf="@+id/guideline3"
             tools:layout_editor_absoluteX="0dp" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_marginBottom="12dp"
+            android:background="#c0c0c0"
+            app:layout_constraintBottom_toTopOf="@+id/guideline6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <View
             android:id="@+id/view"
@@ -107,18 +119,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
             android:text="Giới thiệu"
             android:textColor="#000000"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline3" />
+            app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="32dp"
             android:orientation="vertical"
             android:paddingLeft="17dp"
             android:paddingTop="5dp"
@@ -127,13 +138,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline3">
+            app:layout_constraintTop_toTopOf="@+id/guideline6">
 
             <TextView
                 android:id="@+id/tv_chitiet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ellipsize = "end"
+                android:ellipsize="end"
                 android:maxLines="5"
                 android:text="TextView"
                 android:textColor="#000000"
@@ -175,5 +186,53 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/baseline_keyboard_arrow_left_black_36" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="308dp" />
+
+        <ImageView
+            android:id="@+id/img_tim"
+            android:layout_width="50dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline3"
+            app:srcCompat="@drawable/outline_favorite_border_black_18" />
+
+        <TextView
+            android:id="@+id/tv_luottim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="16dp"
+            android:text="456 thích"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            app:layout_constraintStart_toEndOf="@+id/img_tim"
+            app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        <ImageView
+            android:id="@+id/img_luotxem"
+            android:layout_width="50dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline3"
+            app:srcCompat="@drawable/eye_18" />
+        <TextView
+            android:id="@+id/tv_luotxem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="16dp"
+            android:text="456 lượt xem"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            app:layout_constraintStart_toEndOf="@+id/img_luotxem"
+            app:layout_constraintTop_toTopOf="@+id/guideline3" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

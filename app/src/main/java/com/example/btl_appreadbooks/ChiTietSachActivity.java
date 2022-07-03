@@ -6,12 +6,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,16 +28,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChiTietSachActivity extends AppCompatActivity {
-    TextView tv_chitiet, tv_xemthem, tv_tensach, tv_tentg;
+    TextView tv_chitiet, tv_xemthem, tv_tensach, tv_tentg, tv_tim, tv_luotxem;
     ImageButton btn_quaylai;
     Button btn_docngay;
-
+    ImageView img_anhsach, img_tim, img_luotxem;
+    int matl, masach;
+    String tensach;
     private RecyclerView rcv_category_books;
     private Category_BooksAdapter category_booksAdapter;
+    private int status_tim = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         setContentView(R.layout.activity_chi_tiet_sach);
 
         tv_chitiet = findViewById(R.id.tv_chitiet);
@@ -42,16 +52,39 @@ public class ChiTietSachActivity extends AppCompatActivity {
 
         btn_quaylai = findViewById(R.id.btn_quaylai);
         btn_docngay = findViewById(R.id.btn_docngay);
+        img_anhsach = findViewById(R.id.img_anhsach);
+        img_tim = findViewById(R.id.img_tim);
+        img_luotxem = findViewById(R.id.img_luotxem);
+
+
+
         Bundle bundle = getIntent().getExtras();
 
         if(bundle == null)
             return;
-        Books books = (Books) bundle.get("obj_book");
-        //xu ly du lieu nhan ve
-        //String text = "Park Seo Joon đã xác nhận tham gia dự án bom tấn nằm trong vũ trụ điện ảnh Marvel (MCU) là Captain Marvel 2: The Marvels Trong một cuộc phỏng vấn với The Guardian, Park Seo Joon đã nói về cảm nghĩ của bản thân khi được tham gia MCU: Khi lần đầu tiên tôi nghe được thông tin MCU muốn tôi gia nhập vũ trụ của họ, tôi không thể tin đó là thật. Thật sự là tôi cảm thấy khó tin. Tôi cố gắng thật chú ý với những câu hỏi liên quan đến Marvel Park Seo Joon cũng tỏ ra kín tiếng và cẩn thận với những câu hỏi liên quan đến Marvel. “Đây không phải điều gì ngạc nhiên, bởi các diễn viên của Marvel đều phải giữ bí mật tuyệt đối về tình tiết phim mới";
-        tv_tensach.setText(books.getTitle());
-        tv_tentg.setText(books.getTacgia());
-        tv_chitiet.setText(books.getChitiet());
+        try {
+            if(bundle.getInt("id")>0)
+            {
+                Cursor cursor = MainActivity.database.GetData("SELECT * FROM Sach WHERE PK_MaSach = "+bundle.getInt("id"));
+                while (cursor.moveToNext()){
+                    tv_tensach.setText(cursor.getString(1));
+                    tv_chitiet.setText(cursor.getString(2));
+                    tv_tentg.setText(cursor.getString(3));
+                    masach = cursor.getInt(0);
+                    matl = cursor.getInt(4);
+                    tensach = cursor.getString(1);
+                    //chuyen byte[] -> bitmap
+                    byte[] hinhanh = cursor.getBlob(5);
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(hinhanh, 0, hinhanh.length);
+                    img_anhsach.setImageBitmap(bitmap);
+
+
+                }
+            }
+        }catch (Exception e){
+
+        }
+
 
         rcv_category_books = findViewById(R.id.rcv_category);
         category_booksAdapter = new Category_BooksAdapter(this);
@@ -82,26 +115,43 @@ public class ChiTietSachActivity extends AppCompatActivity {
         btn_docngay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                startActivity(new Intent(ChiTietSachActivity.this, DocSachActivity.class)
-//                        .putExtra("path", R.drawable.BTL));
+                startActivity(new Intent(ChiTietSachActivity.this, DocSachActivity.class)
+                        .putExtra("tensach", tensach));
+            }
+        });
+
+        img_tim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(status_tim == 0){
+                    img_tim.setImageResource(R.drawable.outline_favorite_black_18);
+                    status_tim=1;
+
+                }else{
+                    img_tim.setImageResource(R.drawable.outline_favorite_border_black_18);
+                    status_tim=0;
+                }
+
+
             }
         });
     }
     private List<Category_Books> getListCategoryBooks(){
         List<Category_Books> listCategory = new ArrayList<>();
-        String text = "Park Seo Joon đã xác nhận tham gia dự án bom tấn nằm trong vũ trụ điện ảnh Marvel (MCU) là Captain Marvel 2: The Marvels Trong một cuộc phỏng vấn với The Guardian, Park Seo Joon đã nói về cảm nghĩ của bản thân khi được tham gia MCU: Khi lần đầu tiên tôi nghe được thông tin MCU muốn tôi gia nhập vũ trụ của họ, tôi không thể tin đó là thật. Thật sự là tôi cảm thấy khó tin. Tôi cố gắng thật chú ý với những câu hỏi liên quan đến Marvel Park Seo Joon cũng tỏ ra kín tiếng và cẩn thận với những câu hỏi liên quan đến Marvel. “Đây không phải điều gì ngạc nhiên, bởi các diễn viên của Marvel đều phải giữ bí mật tuyệt đối về tình tiết phim mới";
+
 
         List<Books> listBook = new ArrayList<>();
-        listBook.add(new Books(R.drawable.img, 1, "1_89.000 ₫", text, "1Nguyen Nhat Anh"));
-        listBook.add(new Books(R.drawable.img, 2, "2_89.000 ₫", text, "2Nguyen Nhat Anh"));
-        listBook.add(new Books(R.drawable.img, 3, "3_89.000 ₫", text, "3Nguyen Nhat Anh"));
-        listBook.add(new Books(R.drawable.img, 4, "4_89.000 ₫", text, "4Nguyen Nhat Anh"));
-        listBook.add(new Books(R.drawable.img, 5, "5_89.000 ₫", text, "5Nguyen Nhat Anh"));
-        listBook.add(new Books(R.drawable.img, 6, "6_89.000 ₫", text, "6Nguyen Nhat Anh"));
-        listBook.add(new Books(R.drawable.img, 7, "7_89.000 ₫", text, "7Nguyen Nhat Anh"));
-        listBook.add(new Books(R.drawable.img, 8, "8_89.000 ₫", text, "8Nguyen Nhat Anh"));
+        Cursor cursor = MainActivity.database.GetData("SELECT PK_MaSach, TenSach, HinhAnh_S FROM Sach WHERE FK_MaTL = "+matl);
 
-        listCategory.add(new Category_Books("Có thể bạn quan tâm", listBook));
+        while (cursor.moveToNext()){
+            if(masach!=cursor.getInt(0))
+                listBook.add(new Books(cursor.getInt(0), cursor.getString(1), cursor.getBlob(2)));
+        }
+        if(!listBook.isEmpty()){
+            listCategory.add(new Category_Books("Có thể bạn quan tâm", listBook));
+        }
+
+
 
 
 

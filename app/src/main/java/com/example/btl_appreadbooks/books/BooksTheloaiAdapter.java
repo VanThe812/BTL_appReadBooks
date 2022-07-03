@@ -2,6 +2,8 @@ package com.example.btl_appreadbooks.books;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,8 +45,11 @@ public class BooksTheloaiAdapter extends RecyclerView.Adapter<BooksTheloaiAdapte
         if(book == null){
             return;
         }
-        holder.imgBook.setImageResource(book.getResourceId());
-        holder.tv_title.setText(book.getTitle());
+        //chuyen byte[] -> bitmap
+        byte[] hinhanh = book.getHinhanh();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(hinhanh, 0, hinhanh.length);
+        holder.imgBook.setImageBitmap(bitmap);
+        holder.tv_title.setText(book.getTensach());
 
         holder.layout_item_chitiet_theloai.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,10 +62,10 @@ public class BooksTheloaiAdapter extends RecyclerView.Adapter<BooksTheloaiAdapte
     private void onClickGotoChiTiet(Books books) {
         Intent intent = new Intent(mContext, ChiTietSachActivity.class);
 
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("obj_book", books);
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable("obj_book", books);
 
-        intent.putExtras(bundle);
+        intent.putExtra("id", books.getMasach());
         mContext.startActivity(intent);
 
     }

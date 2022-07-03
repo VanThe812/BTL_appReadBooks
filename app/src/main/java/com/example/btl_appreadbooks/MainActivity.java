@@ -8,9 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.btl_appreadbooks.Category_Books.Category_Books;
@@ -32,12 +35,18 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private ViewPager mViewPagerMenu;
     private ViewPagerMenuAdapter viewPagerMenuAdapter;
+    private Button btn_search;
+
+    public static Database database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
+//        androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
+//        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
+//        actionBar.setDisplayShowCustomEnabled(true);
 
 //        mTabLayout = findViewById(R.id.tab_layout);
 //        mViewPager = findViewById(R.id.view_pager);
@@ -54,6 +63,13 @@ public class MainActivity extends AppCompatActivity {
 //                case 2: tab.setText("Mới nhất");break;
 //            }
 //        }).attach();
+
+        database = new Database(this, "DocSach.sqlite", null, 1);//tạo mới 1 database
+        database.QueryData("CREATE TABLE IF NOT EXISTS TheLoai(PK_MaTL INTEGER PRIMARY KEY AUTOINCREMENT, TenLoai varchar(150), HinhAnh_TL  BLOB)");
+        database.QueryData("CREATE TABLE IF NOT EXISTS Sach(PK_MaSach INTEGER PRIMARY KEY AUTOINCREMENT, TenSach varchar(250), GioiThieu TEXT, TacGia varchar(100), FK_MaTL INTEGER, HinhAnh_S BLOB)");
+        database.QueryData("CREATE TABLE IF NOT EXISTS TaiKhoan(PK_TaiKhoan INTEGER PRIMARY KEY AUTOINCREMENT, TenTaiKhoan varchar(250), MatKhau varchar(250), Quyen INTEGER)");
+//        database.QueryData("INSERT INTO TaiKhoan VALUES(null, admin, 123456, 1)");
+//        database.Insert_TaiKhoan("admin", "123456", 1);
 
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
@@ -92,6 +108,22 @@ public class MainActivity extends AppCompatActivity {
 //
 //        category_booksAdapter.setData(getListCategoryBooks());
 //        rcv_category_books.setAdapter(category_booksAdapter);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.btn_search:
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_top, menu);
+        return super.onCreateOptionsMenu(menu);
     }
     private void setUpViewPager(){
 

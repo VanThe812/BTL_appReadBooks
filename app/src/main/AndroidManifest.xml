@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.btl_appreadbooks">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+        android:theme="@style/Theme.BTL_appReadBooks">
+        <activity
+            android:name=".DangNhapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QuanLySachActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddTheLoaiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QuanLyTheLoaiActivity"
+            android:exported="false" />
         <activity
             android:name=".AddBookActivity"
             android:exported="false" />
@@ -19,13 +34,13 @@
             android:name=".ChiTietTheLoaiActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".DocSachActivity"
             android:exported="false" />
         <activity
             android:name=".ChiTietSachActivity"
             android:exported="false" />
         <activity
-            android:name=".DocSachActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

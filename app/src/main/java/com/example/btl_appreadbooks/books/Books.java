@@ -3,26 +3,15 @@ package com.example.btl_appreadbooks.books;
 import java.io.Serializable;
 
 public class Books implements Serializable {
-    private int resourceId;
+
     private int masach;
-    private String title;
-    private String chitiet;
-    private String tacgia;
+    private String tensach;
+    private byte[] hinhanh;
 
-    public Books(int resourceId, int masach, String title, String chitiet, String tacgia) {
-        this.resourceId = resourceId;
+    public Books(int masach, String tensach, byte[] hinhanh) {
         this.masach = masach;
-        this.title = title;
-        this.chitiet = chitiet;
-        this.tacgia = tacgia;
-    }
-
-    public int getResourceId() {
-        return resourceId;
-    }
-
-    public void setResourceId(int resourceId) {
-        this.resourceId = resourceId;
+        this.tensach = tensach;
+        this.hinhanh = hinhanh;
     }
 
     public int getMasach() {
@@ -33,28 +22,20 @@ public class Books implements Serializable {
         this.masach = masach;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTensach() {
+        return tensach;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTensach(String tensach) {
+        this.tensach = tensach;
     }
 
-    public String getChitiet() {
-        return chitiet;
+    public byte[] getHinhanh() {
+        return hinhanh;
     }
 
-    public void setChitiet(String chitiet) {
-        this.chitiet = chitiet;
-    }
-
-    public String getTacgia() {
-        return tacgia;
-    }
-
-    public void setTacgia(String tacgia) {
-        this.tacgia = tacgia;
+    public void setHinhanh(byte[] hinhanh) {
+        this.hinhanh = hinhanh;
     }
 
     public Books() {
